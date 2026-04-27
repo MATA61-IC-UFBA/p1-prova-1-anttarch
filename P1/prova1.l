@@ -11,11 +11,13 @@ int yylex();
 
 NUM [0-9]+(\.[0-9]+)?
 WHITESPACE [ \t]
+COMMENT \/\/.*
 
 %%
 
 /* copiar E2 e fazer as extensões */
 {WHITESPACE}
+{COMMENT}
 {NUM}           { return NUM; }
 "("    		    { return LPAR; }
 ")"		        { return RPAR; }
