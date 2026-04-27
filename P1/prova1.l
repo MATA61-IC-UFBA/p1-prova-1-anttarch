@@ -17,7 +17,6 @@ STRING \"[^\"]*\"
 
 %%
 
-/* copiar E2 e fazer as extensões */
 {WHITESPACE}
 {COMMENT}
 
