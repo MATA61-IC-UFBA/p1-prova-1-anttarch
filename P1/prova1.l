@@ -12,7 +12,8 @@ int yylex();
 NUM [0-9]+(\.[0-9]+)?
 WHITESPACE [ \t]
 COMMENT \/\/.*
-IDENT [a-zA-Z][a-zA-Z0-9_]*
+IDENT [a-z][a-z0-9_]*
+STRING \".*\"
 
 %%
 
@@ -20,12 +21,13 @@ IDENT [a-zA-Z][a-zA-Z0-9_]*
 {WHITESPACE}
 {COMMENT}
 
+{STRING}        { return STRING; }
 "print"         { return PRINT; }
 "concat"        { return CONCAT; }
 "length"        { return LENGTH; }
 {IDENT}         { return IDENT; }
 "="             { return ASSIGN; }
-\"              { return QUOT; }
+","             { return COMMA; }
 
 {NUM}           { return NUM; }
 "("    		    { return LPAR; }
