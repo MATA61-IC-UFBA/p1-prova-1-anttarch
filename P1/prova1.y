@@ -31,7 +31,7 @@ stmt_list
 
 stmt
 : IDENT ASSIGN expr
-| PRINT LPAR exprlist RPAR
+| PRINT LPAR int_string RPAR
 | CONCAT LPAR exprlist RPAR
 | LENGTH LPAR expr RPAR
 | expr
@@ -39,6 +39,12 @@ stmt
 
 exprlist
 : exprlist COMMA exprlist
+| STRING
+| IDENT
+;
+
+int_string
+: NUM
 | STRING
 | IDENT
 ;
