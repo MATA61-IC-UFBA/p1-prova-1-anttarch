@@ -13,7 +13,7 @@ void yyerror(const char *msg);
 %token NUM LPAR RPAR PLUS MINUS TIMES DIV
 %token ERROR
 
-%token STRING IDENT ASSIGN PRINT CONCAT LENGTH
+%token STRING IDENT ASSIGN PRINT CONCAT LENGTH COMMA
 
 %start program
 
@@ -35,6 +35,12 @@ stmt
 | CONCAT LPAR exprlist RPAR
 | LENGTH LPAR expr RPAR
 | expr
+;
+
+exprlist
+: exprlist COMMA exprlist
+| STRING
+| IDENT
 ;
 
 expr
