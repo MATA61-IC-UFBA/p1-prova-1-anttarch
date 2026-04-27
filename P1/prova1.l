@@ -13,7 +13,7 @@ NUM [0-9]+(\.[0-9]+)?
 WHITESPACE [ \t]
 COMMENT \/\/.*
 IDENT [a-z][a-z0-9_]*
-STRING \".*\"
+STRING \"[^\"]*\"
 
 %%
 
