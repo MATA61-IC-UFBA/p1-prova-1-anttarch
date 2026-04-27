@@ -9,6 +9,8 @@ void yyerror(const char *msg);
 
 %}
 
+%token EOL 0
+%token NUM LPAR RPAR PLUS MINUS TIMES DIV
 %token ERROR
 
 %start program
@@ -32,7 +34,13 @@ stmt
 ;
 
 expr
-/* completar */
+: expr PLUS expr
+| expr MINUS expr
+| expr TIMES expr
+| expr DIV expr
+| LPAR expr RPAR
+| NUM
+;
 
 %%
 
