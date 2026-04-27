@@ -18,8 +18,8 @@ STRING \"[^\"]*\"
 %%
 
 {WHITESPACE}
-{COMMENT}
 
+{COMMENT}       { return COMMENT; }
 {STRING}        { return STRING; }
 "print"         { return PRINT; }
 "concat"        { return CONCAT; }
