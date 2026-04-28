@@ -11,7 +11,7 @@ int yylex();
 
 NUM [0-9]+(\.[0-9]+)?
 WHITESPACE [ \t]
-COMMENT \/\/.*
+COMMENT \/\/.*\n
 IDENT [a-z][a-z0-9_]*
 STRING \"[^\"]*\"
 
@@ -35,7 +35,6 @@ STRING \"[^\"]*\"
 "-"             { return MINUS; }
 "*"             { return TIMES; }
 "/"             { return DIV; }
-\n		        { return EOL; }
 
 .            { return ERROR; }
 

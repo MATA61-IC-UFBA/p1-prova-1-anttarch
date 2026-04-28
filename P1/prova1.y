@@ -9,7 +9,6 @@ void yyerror(const char *msg);
 
 %}
 
-%token EOL 0
 %token NUM LPAR RPAR PLUS MINUS TIMES DIV
 %token ERROR
 
@@ -30,32 +29,43 @@ stmt_list
 
 stmt
 : COMMENT
-| IDENT ASSIGN expr
-| PRINT LPAR int_string RPAR
+| IDENT ASSIGN assignables
+| assignables
+;
+
+assignables
+: num_expr
+| function
+| STRING
+;
+
+function
+: PRINT LPAR int_string RPAR
 | CONCAT LPAR exprlist RPAR
-| LENGTH LPAR expr RPAR
-| expr
+| LENGTH LPAR string_ident RPAR
 ;
 
 exprlist
 : exprlist COMMA exprlist
-| STRING
-| IDENT
+| string_ident
 ;
 
 int_string
 : NUM
-| STRING
+| string_ident
+;
+
+string_ident
+: STRING
 | IDENT
 ;
 
-expr
-: STRING
-| expr PLUS expr
-| expr MINUS expr
-| expr TIMES expr
-| expr DIV expr
-| LPAR expr RPAR
+num_expr
+: num_expr PLUS num_expr
+| num_expr MINUS num_expr
+| num_expr TIMES num_expr
+| num_expr DIV num_expr
+| LPAR num_expr RPAR
 | NUM
 ;
 
